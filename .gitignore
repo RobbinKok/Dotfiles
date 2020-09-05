@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+#But not these:
+!*.vimrc
+!*.vim
+!*.bashrc
+!*.gitignore
+
+!.config/
+!.config/i3/config
