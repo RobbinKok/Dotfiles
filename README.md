@@ -18,5 +18,9 @@ Empty schreenshot:
 - Bottom right:
     - [pipes.sh](https://github.com/pipeseroni/pipes.sh)
 
+#### The terminal used in the screenshots:
+ - [Kitty](https://sw.kovidgoyal.net/kitty/)
+    - [The config here](https://github.com/RobbinKok/Dotfiles./blob/master/.config/kitty/kitty.conf)
+
 #### The wallpaper:
 - [Tristan Pineda on Unsplash](https://unsplash.com/photos/v2f2l0MVHdk)
