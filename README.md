@@ -19,4 +19,4 @@ Empty schreenshot:
     - [pipes.sh](https://github.com/pipeseroni/pipes.sh)
 
 #### The wallpaper:
-[Tristan Pineda on Unsplash](https://unsplash.com/photos/v2f2l0MVHdk)
+- [Tristan Pineda on Unsplash](https://unsplash.com/photos/v2f2l0MVHdk)
