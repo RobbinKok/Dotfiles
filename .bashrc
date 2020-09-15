@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=$PATH:~/flutter/bin
+export  DOTNET_CLI_TELEMETRY_OPTOUT=True
 
 #alias db="cd && cd /opt/lampp/ && sudo ./manager-linux-x64.run"
 alias db="sudo /opt/lampp/lampp start"

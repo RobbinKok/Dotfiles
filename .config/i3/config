@@ -277,6 +277,9 @@ smart_borders no_gaps
 #------------------------------------
 #exec_always feh --bg-scale /home/robbin/f1.jpg
 exec_always feh --bg-scale /home/robbin/Downloads/tristan-pineda-v2f2l0MVHdk-unsplash.jpg
-exec_always xrandr --output LVDS-1 --primary --mode 1600x900 --pos 1440x0 --rotate normal --output DP-1 --off --output HDMI-1 --mode 1440x900 --pos 0x0 --rotate normal --output VGA-1 --off
+#exec_always xrandr --output LVDS-1 --primary --mode 1600x900 --pos 1440x0 --rotate normal --output DP-1 --off --output HDMI-1 --mode 1440x900 --pos 0x0 --rotate normal --output VGA-1 --off
+exec_always xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 2560x1080 --pos 1920x0 --rotate normal --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
+
 exec_always compton -f --backend glx --vsync opengl-swc
-exec_always ./layout.sh
+#exec_always ./layout.sh
+#exec_always ./screen2.sh
