@@ -17,3 +17,15 @@ snippet box "Box"
 `!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
 $0
 endsnippet
+
+snippet cbox "Comment box"
+`!p snip.rv = '# ┌' + '─' * (len(t[1]) + 2) + '┐'`
+# │ $1 │
+`!p snip.rv = '# └' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+
+snippet date
+Datum: `date +%F`
+endsnippet
+
