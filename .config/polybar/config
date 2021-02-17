@@ -1,0 +1,349 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #0f111b
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #ecf0c1
+foreground-alt = #555
+primary = #686f9a
+secondary = #e33400
+alert = #bd2c40
+
+[bar/right]
+background            = ${colors.background}
+border-color          = ${colors.foreground}
+border-size           = 0
+border-transparent    = true
+bottom                = fale
+cursor-click          = pointer
+cursor-scroll         = ns-resize
+fixed-center          = true
+foreground            = ${colors.foreground}
+height                = 25
+line-color            = #f00
+line-size             = 1
+module-margin-left    = 0
+module-margin-right   = 0
+monitor               = ${env:MONITOR:}
+;monitor-fallback      = eDP-1-1
+offset-x              = 85%:-30
+offset-y              = 5
+override-redirect     = true
+padding-left          = 5
+padding-right         = 5
+radius                = 15
+tray-position         = none
+width                 = 15%
+
+
+modules-left          = pulseaudio 
+modules-center        = wlan battery 
+modules-right         = date 
+
+font-0 = mononoki Nerd Font:weight=bold:fontformat=truetype:size=10:antialias=true;4
+font-1 = Noto Sans:fontformat=truetype:size=8:antialias=true;4
+
+wm-restack = i3
+
+[bar/left-to-right]
+inherit               = bar/right
+offset-x              = 78%-40
+offset-y              = 5
+background            = #00000000
+foreground            = ${colors.foreground}
+
+modules-left          = 
+modules-center        = text
+modules-right         = 
+
+width = 5%
+
+tray-position         = center 
+tray-padding          = 1
+tray-background       = #{colors.background}
+
+[bar/middle]
+inherit               = bar/right
+offset-x              = 37%
+offset-y              = 5
+width                 = 25%
+background            = ${colors.background} 
+modules-left          = DE
+modules-center        = spotify
+modules-right         = NL
+
+
+[bar/left]
+inherit               = bar/right
+offset-x              = 30
+offset-y              = 5
+tray-offset-x         = 10
+tray-offset-y         = 0
+tray-reparent         = true
+width                 = 15%
+background            = ${colors.background} 
+modules-left          = 
+modules-center        = i3
+modules-right         =
+scroll-down           = i3wm-wsprev
+scroll-up             = i3wm-wsnext
+
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 50%
+height = 27
+offset-x = 25%
+;offset-y = 1%
+radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+;border-size = 4
+;border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = i3
+modules-center = mpd
+modules-right = xbacklight pulseaudio wlan eth battery temperature date powermenu
+
+tray-position = right
+tray-padding = 2
+tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-underline= #5ccc96
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${colors.background}
+label-visible-underline = #f2ce00
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.background}
+label-urgent-underline =  #e33400
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+[module/wlan]
+type = internal/network
+interface = net1
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = ens2
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "%Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume =  VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted =  muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 100
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging =  <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/mic]
+type = custom/script
+internal = 0.1
+exec = python3 ~/.config/polybar/mic.py
+
+[module/spotify]
+type = custom/script
+interval = 3
+format-prefix = " "
+format = <label>
+exec = python3 ~/.config/polybar/script.py -f '{artist}: {song}'
+format-underline = #5ccc96
+
+[module/DE]
+type = custom/script
+interval = 3600
+exec = python3 ~/.config/polybar/tankscraper.py -d DE
+
+[module/NL]
+type = custom/script
+interval = 3600
+exec = python3 ~/.config/polybar/tankscraper.py -n NL
+
+
+[module/text]
+type = custom/text
+content = " "
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

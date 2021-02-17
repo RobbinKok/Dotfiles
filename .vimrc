@@ -12,11 +12,23 @@ filetype plugin indent on
 
 call plug#begin()
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'pineapplegiant/spaceduck'
 call plug#end()
 
+    if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+    endif
 
-
+   colorscheme spaceduck
+    let g:lightline = {
+          \ 'colorscheme': 'spaceduck',
+          \ }
 set backspace=indent,eol,start
 
 set number
@@ -52,7 +64,8 @@ set smartcase
 set linebreak
 
 set confirm
-
+set nohlsearch
+set scrolloff=8
 "show status line
 set laststatus=2
 
@@ -71,3 +84,5 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 set clipboard=unnamedplus
 
+hi NonText ctermbg=none 
+hi Normal guibg=NONE ctermbg=NONE
