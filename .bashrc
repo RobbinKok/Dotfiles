@@ -117,13 +117,25 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=$PATH:~/flutter/bin
-export  DOTNET_CLI_TELEMETRY_OPTOUT=True
+export DOTNET_CLI_TELEMETRY_OPTOUT=True
+export TERM="xterm-256color"
 
 #alias db="cd && cd /opt/lampp/ && sudo ./manager-linux-x64.run"
 alias db="sudo /opt/lampp/lampp start"
 alias dijo="./.cargo/bin/dijo"
-alias vim="nvim"
+alias vim="nvim-nightly"
 alias zathura="zathura --fork"
 alias i3config="vim ~/.config/i3/config"
 alias polyc="vim ~/.config/polybar/config"
 alias Joplin="./Downloads/Joplin-1.6.8.AppImage"
+alias p4="cd /home/robbin/Documents/Jaar\ 2/Periode\ 4/"
+alias p3="cd /home/robbin/Documents/Jaar\ 2/Periode\ 3/"
+alias p2="cd /home/robbin/Documents/Jaar\ 2/Periode\ 2/"
+alias p1="cd /home/robbin/Documents/Jaar\ 2/Periode\ 1/"
+alias vimrc="vim ~/.vimrc"
+alias bashrc="vim ~/.bashrc"
+alias ..="cd ../"
+alias ....="cd ../.."
+
+export NVM_DIR="/home/robbin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -55,7 +55,7 @@ bindsym $mod+r exec /home/robbin/test.sh
 
 # change focus
 bindsym $mod+j focus left
-bindsym $mod+k focus down
+bindsym $mod+alt+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
@@ -105,16 +105,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -170,6 +170,26 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+}
+
+bindsym $mod+p mode "music/audio"
+bindsym $mod+k mode "music/audio"
+
+mode "music/audio" {
+
+        bindsym $mod+p exec --no-startup-id pactl set-sink-volume 1 +10% 
+        bindsym $mod+i exec --no-startup-id pactl set-sink-volume 1 -10% 
+        bindsym $mod+o exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle 
+
+        bindsym k exec playerctl play-pause
+        bindsym l exec playerctl next
+        bindsym j exec playerctl previous
+        
+        bindsym Escape mode "default"
+        bindsym Return mode "default"
+        bindsym $mod+Return mode "default"
+
+
 }
 
 #bindsym $mod+r mode "resize"
@@ -240,13 +260,14 @@ bindsym $mod + Escape exec amixer set Capture toggle && python3 ~/.config/polyba
 #------------------------------------
 bindsym Print exec flameshot gui
 bindsym $mod+Shift+S exec flameshot gui
-bindsym $mod+Shift+d exec google-chrome-stable --new-window --app=https://crypt.ee/home
 bindsym $mod+Shift+t exec python3 /home/robbin/projects/tankscraper/tankscraper.py
 bindsym $mod+n exec --no-startup-id kitty nohup ./Downloads/Joplin-1.7.10.AppImage &
+bindsym $mod+o exec --no-startup-id kitty nohup ./Downloads/Obsidian-0.11.0.AppImage &
 #------------------------------------
 #--------Workspace assignments-------
 #------------------------------------
 #assign [class="jetbrains-idea"] $ws2 
+assign [class="Thunderbird"] $ws4
 assign [class="spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
 #for_window [class=Firefox|Chromium|Opera|Transmission-gtk] focus
@@ -257,7 +278,7 @@ for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Main"] floating enable
 for_window [class="Android Emulator - Pixel_3a_XL_API_28:5554"] floating enable
 for_window [class="PacketTracer7"] floating enable
-
+for_window [class="App"] floating enable
 # -----------------------------------
 # ---------------Gaps----------------
 # -----------------------------------
@@ -285,7 +306,8 @@ exec_always feh --bg-scale /home/robbin/Downloads/tristan-pineda-v2f2l0MVHdk-uns
 exec_always xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 2560x1080 --pos 1920x0 --rotate normal --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
 
 #exec_always compton -f --backend glx --vsync opengl-swc --config ~/.config/compton/compton.conf
-exec_always compton --config ~/.config/compton/compton.conf
+#exec_always compton --config ~/.config/compton/compton.conf
+exec_always picom --config ~/picom/picom.sample.conf --experimental-backend
 #exec_always ./layout.sh
 #exec_always ./screen2.sh
 exec_always --no-startup-id /usr/lib/kdeconnectd
