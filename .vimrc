@@ -27,6 +27,7 @@ Plug 'sharkdp/fd'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'Townk/vim-autoclose' 
 call plug#end()
 
     if exists('+termguicolors')
@@ -115,6 +116,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"Backspace binding
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
 
 
 "clipboard
