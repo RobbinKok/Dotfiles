@@ -136,6 +136,15 @@ alias vimrc="vim ~/.vimrc"
 alias bashrc="vim ~/.bashrc"
 alias ..="cd ../"
 alias ....="cd ../.."
+alias angular_install="npm i typescript@4.1 @angular/common @angular/compiler @angular/compiler-cli @angular/core @angular/forms"
+alias gs="git status"
+alias gp="git pull"
+alias ga="git add"
+alias gps="git push"
+alias gc="git checkout"
 
 export NVM_DIR="/home/robbin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+eval "$(starship init bash)"
