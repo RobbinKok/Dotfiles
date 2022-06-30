@@ -261,8 +261,6 @@ bindsym $mod + Escape exec amixer set Capture toggle && python3 ~/.config/polyba
 bindsym Print exec flameshot gui
 bindsym $mod+Shift+S exec flameshot gui
 bindsym $mod+Shift+t exec python3 /home/robbin/projects/tankscraper/tankscraper.py
-bindsym $mod+n exec --no-startup-id kitty nohup ./Downloads/Joplin-1.7.10.AppImage &
-bindsym $mod+o exec --no-startup-id kitty nohup ./Downloads/Obsidian-0.11.0.AppImage &
 #------------------------------------
 #--------Workspace assignments-------
 #------------------------------------
@@ -276,7 +274,7 @@ for_window [class="Spotify"] move to workspace $ws10
 #---------Default floating-----------
 #------------------------------------
 for_window [class="Main"] floating enable
-for_window [class="Android Emulator - Pixel_3a_XL_API_28:5554"] floating enable
+for_window [class="Android Emulator - Pixel_5_API_28:5554"] floating enable
 for_window [class="PacketTracer7"] floating enable
 for_window [class="App"] floating enable
 # -----------------------------------
@@ -301,7 +299,9 @@ gaps top 30
 #--------------startup---------------
 #------------------------------------
 #exec_always feh --bg-scale /home/robbin/f1.jpg
-exec_always feh --bg-scale /home/robbin/Downloads/tristan-pineda-v2f2l0MVHdk-unsplash.jpg
+#exec_always feh --bg-scale /home/robbin/Downloads/tristan-pineda-v2f2l0MVHdk-unsplash.jpg
+#exec_always feh --bg-fill /home/robbin/Downloads/new-picture-of-the-ferrari-f1-75-at-sunset-today-at-barcelona-4k-1920×1080.jpg
+exec_always feh --bg-scale /home/robbin/Downloads/town-church-switzerland-austria-lake-hd-wallpaper-d32bc4eef8670507773aec7d85b2afe0.jpg
 #exec_always xrandr --output LVDS-1 --primary --mode 1600x900 --pos 1440x0 --rotate normal --output DP-1 --off --output HDMI-1 --mode 1440x900 --pos 0x0 --rotate normal --output VGA-1 --off
 exec_always xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 2560x1080 --pos 1920x0 --rotate normal --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
 
@@ -315,3 +315,4 @@ exec_always --no-startup-id kdeconnect-indicator
 exec_always --no-startup-id /home/robbin/.config/polybar/launch.sh
 exec --no-startup-id nm-applet
 #exec spotify
+

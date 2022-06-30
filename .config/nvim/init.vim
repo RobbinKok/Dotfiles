@@ -1,74 +1,34 @@
-set nocompatible
-call plug#begin()
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'beeender/Comrade'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+source $HOME/.config/nvim/general/settings.vim
+set number
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'vim-airline/vim-airline'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdtree'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'pineapplegiant/spaceduck', {'branch': 'main'}
+Plug 'itchyny/lightline.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
 
+    if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+  endif
 
-    set runtimepath^=~/.vim runtimepath+=~/.vim/after
-    let &packpath = &runtimepath
-    source ~/.vimrc
+   colorscheme spaceduck    
+    let g:lightline = {    
+          \ 'colorscheme': 'spaceduck',    
+          \ }   
 
-let g:doeplete#enable_at_startup = 1
-set backspace=indent,eol,start
+let g:deoplete#enable_at_startup = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-set number
-syntax on
-set autoindent
-set showmatch
-
-set showmode
-set showcmd
-
-set ruler
-set laststatus=2
-set noerrorbells
-set visualbell
-set title
-
-set noswapfile
-set nobackup
-set nowb
-
-set autoindent
-filetype plugin indent on
-set expandtab
-set nowrap
-
-set softtabstop=4
-
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-
-set linebreak
-
-set confirm
-
-"show status line
-set laststatus=2
-
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-autocmd FileType python map <buffer> <F3> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F3> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-set clipboard=unnamedplus
