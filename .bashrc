@@ -121,9 +121,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=True
 export TERM="xterm-256color"
 
 #alias db="cd && cd /opt/lampp/ && sudo ./manager-linux-x64.run"
+alias vim="nvim "
 alias db="sudo /opt/lampp/lampp start"
 alias dijo="./.cargo/bin/dijo"
-alias vim="nvim-nightly"
 alias zathura="zathura --fork"
 alias i3config="vim ~/.config/i3/config"
 alias polyc="vim ~/.config/polybar/config"
@@ -142,9 +142,18 @@ alias gp="git pull"
 alias ga="git add"
 alias gps="git push"
 alias gc="git checkout"
+alias notes="flatpak run md.obsidian.Obsidian"
+alias fc=". ~/flutterGetX.sh"
+alias ebsi="cd /home/robbin/Projects/ebsi"
+alias dokcer="sudo docker "
+alias dw="cd /home/robbin/Downloads"
+alias dc="cd /home/robbin/Documents"
+alias pro="cd /home/robbin/Projects"
 
 export NVM_DIR="/home/robbin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 eval "$(starship init bash)"
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
